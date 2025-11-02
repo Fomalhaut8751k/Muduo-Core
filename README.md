@@ -8,3 +8,7 @@ muduo网络库的核心功能
 2. 2025.10.31
 
     熟悉了epoll重要函数如`epoll_create()`, `epoll_wait()`, `epoll_ctl()`的使用，以及epoll和socket结合实现简单的服务端与客户端的通信功能。
+
+3. 2025.11.2
+
+    熟悉了UTP网络编程，TCP协议和UDP协议，TCP协议的三次挥手和四次挥手等
