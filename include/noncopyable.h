@@ -1,7 +1,8 @@
 #ifndef NONCOPYABLE_H
 #define NONCOPYABLE_H
 
-namespace muduo
+
+namespace mymuduo
 {
     class noncopyable
     {
