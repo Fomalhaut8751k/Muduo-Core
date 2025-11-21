@@ -185,4 +185,8 @@ src/CMakeFiles/mymuduo.dir/DefaultPoller.cc.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/stdlib.h
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/EpollPoller.h \
+ /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/Poller.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h /usr/include/c++/11/stdlib.h

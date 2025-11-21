@@ -1,12 +1,9 @@
 #include "../include/Channel.h"
 #include "../include/log_system/include/MyLog.hpp"
-// #include "../include/EventLoop.h"
+#include "../include/EventLoop.h"
 
 #include "sys/epoll.h"
 
-
-using namespace mymuduo::net;
-using namespace mymuduo;
 
 const int Channel::kNoneEvent = 0;
 const int Channel::kReadEvent = EPOLLIN | EPOLLPRI;  // 0x001 0x002
@@ -40,19 +37,19 @@ void Channel::tie(const std::shared_ptr<void>& obj)
 void Channel::update()
 {   
     // 通过Channel所属的EventLoop，调用poller
-    // loop_->updateChannel(this);
+    loop_->updateChannel(this);   
 }
 
 // 在Channel所属的Eventloop中
 void Channel::remove()
 {
-    // loop_->removeChannel(this);
+    loop_->removeChannel(this);
 }
 
 void Channel::handleEvent(TimeStamp receiveTime)
 {
     if(tied_)
-    {
+    {   // 如果监控的对象还存在
         std::shared_ptr<void> guard = tie_.lock();
         if(guard)
         {

@@ -2,8 +2,6 @@
 
 #include <string.h> 
 
-using namespace mymuduo;
-
 InetAddress::InetAddress(uint16_t port, std::string ip)
 {
     memset(&addr_, 0, sizeof(addr_));
@@ -48,6 +46,10 @@ const struct sockaddr_in* InetAddress::getSockAddr() const
     return &addr_;
 }
 
+void InetAddress::setSockAddr(const sockaddr_in& addr)
+{
+    addr_ = addr;
+}
 
 
 /* 测试 */

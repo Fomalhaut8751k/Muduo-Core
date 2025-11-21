@@ -5,9 +5,6 @@
 #include <string.h>
 #include <errno.h>
 
-using namespace mymuduo::net;
-using namespace mymuduo;
-
 const int kNew = -1;  // channel未添加到poller中
 const int kAdded = 1;  // channel已添加到poller中
 const int kDeleted = 2;   // channel已添加到poller中但后续被删除

@@ -1,8 +1,6 @@
 #include "../include/Poller.h"
 // #include "../include/Channel.h"
 
-using namespace mymuduo::net;
-
 Poller::Poller(EventLoop* loop):
     ownerLoop_(loop)
 {

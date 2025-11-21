@@ -2,8 +2,6 @@
 
 #include <time.h>
 
-using namespace mymuduo;
-
 TimeStamp::TimeStamp()
     :microSecondsSinceEpoch_(0)
 {

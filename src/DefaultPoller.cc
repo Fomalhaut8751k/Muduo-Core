@@ -1,11 +1,9 @@
 #include "../include/Poller.h"
-// #include "EPollPoller.h"
+#include "../include/EpollPoller.h"
 // #include "PollPoller.h"
 
 #include <stdlib.h>
 
-// using namespace mymuduo;
-using namespace mymuduo::net;
 
 Poller* Poller::newDefaultPoller(EventLoop* loop)
 {
@@ -16,7 +14,8 @@ Poller* Poller::newDefaultPoller(EventLoop* loop)
     }
     else
     {
-        // return new EpollPoller();
-        return nullptr;
+        return new EpollPoller(loop);
+        // return nullptr;
+        // return std::make_shared<EpollPoller>(loop);
     }
 }

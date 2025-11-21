@@ -130,6 +130,78 @@ mymuduo/fast:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/build
 .PHONY : mymuduo/fast
 
+Acceptor.o: Acceptor.cc.o
+.PHONY : Acceptor.o
+
+# target to build an object file
+Acceptor.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Acceptor.cc.o
+.PHONY : Acceptor.cc.o
+
+Acceptor.i: Acceptor.cc.i
+.PHONY : Acceptor.i
+
+# target to preprocess a source file
+Acceptor.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Acceptor.cc.i
+.PHONY : Acceptor.cc.i
+
+Acceptor.s: Acceptor.cc.s
+.PHONY : Acceptor.s
+
+# target to generate assembly for a file
+Acceptor.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Acceptor.cc.s
+.PHONY : Acceptor.cc.s
+
+Buffer.o: Buffer.cc.o
+.PHONY : Buffer.o
+
+# target to build an object file
+Buffer.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Buffer.cc.o
+.PHONY : Buffer.cc.o
+
+Buffer.i: Buffer.cc.i
+.PHONY : Buffer.i
+
+# target to preprocess a source file
+Buffer.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Buffer.cc.i
+.PHONY : Buffer.cc.i
+
+Buffer.s: Buffer.cc.s
+.PHONY : Buffer.s
+
+# target to generate assembly for a file
+Buffer.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Buffer.cc.s
+.PHONY : Buffer.cc.s
+
+Callbacks.o: Callbacks.cc.o
+.PHONY : Callbacks.o
+
+# target to build an object file
+Callbacks.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Callbacks.cc.o
+.PHONY : Callbacks.cc.o
+
+Callbacks.i: Callbacks.cc.i
+.PHONY : Callbacks.i
+
+# target to preprocess a source file
+Callbacks.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Callbacks.cc.i
+.PHONY : Callbacks.cc.i
+
+Callbacks.s: Callbacks.cc.s
+.PHONY : Callbacks.s
+
+# target to generate assembly for a file
+Callbacks.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Callbacks.cc.s
+.PHONY : Callbacks.cc.s
+
 Channel.o: Channel.cc.o
 .PHONY : Channel.o
 
@@ -153,6 +225,30 @@ Channel.s: Channel.cc.s
 Channel.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Channel.cc.s
 .PHONY : Channel.cc.s
+
+CurrentThread.o: CurrentThread.cc.o
+.PHONY : CurrentThread.o
+
+# target to build an object file
+CurrentThread.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/CurrentThread.cc.o
+.PHONY : CurrentThread.cc.o
+
+CurrentThread.i: CurrentThread.cc.i
+.PHONY : CurrentThread.i
+
+# target to preprocess a source file
+CurrentThread.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/CurrentThread.cc.i
+.PHONY : CurrentThread.cc.i
+
+CurrentThread.s: CurrentThread.cc.s
+.PHONY : CurrentThread.s
+
+# target to generate assembly for a file
+CurrentThread.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/CurrentThread.cc.s
+.PHONY : CurrentThread.cc.s
 
 DefaultPoller.o: DefaultPoller.cc.o
 .PHONY : DefaultPoller.o
@@ -226,6 +322,54 @@ EventLoop.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoop.cc.s
 .PHONY : EventLoop.cc.s
 
+EventLoopThread.o: EventLoopThread.cc.o
+.PHONY : EventLoopThread.o
+
+# target to build an object file
+EventLoopThread.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThread.cc.o
+.PHONY : EventLoopThread.cc.o
+
+EventLoopThread.i: EventLoopThread.cc.i
+.PHONY : EventLoopThread.i
+
+# target to preprocess a source file
+EventLoopThread.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThread.cc.i
+.PHONY : EventLoopThread.cc.i
+
+EventLoopThread.s: EventLoopThread.cc.s
+.PHONY : EventLoopThread.s
+
+# target to generate assembly for a file
+EventLoopThread.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThread.cc.s
+.PHONY : EventLoopThread.cc.s
+
+EventLoopThreadPool.o: EventLoopThreadPool.cc.o
+.PHONY : EventLoopThreadPool.o
+
+# target to build an object file
+EventLoopThreadPool.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.o
+.PHONY : EventLoopThreadPool.cc.o
+
+EventLoopThreadPool.i: EventLoopThreadPool.cc.i
+.PHONY : EventLoopThreadPool.i
+
+# target to preprocess a source file
+EventLoopThreadPool.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.i
+.PHONY : EventLoopThreadPool.cc.i
+
+EventLoopThreadPool.s: EventLoopThreadPool.cc.s
+.PHONY : EventLoopThreadPool.s
+
+# target to generate assembly for a file
+EventLoopThreadPool.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.s
+.PHONY : EventLoopThreadPool.cc.s
+
 InetAddress.o: InetAddress.cc.o
 .PHONY : InetAddress.o
 
@@ -274,6 +418,54 @@ Poller.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Poller.cc.s
 .PHONY : Poller.cc.s
 
+Socket.o: Socket.cc.o
+.PHONY : Socket.o
+
+# target to build an object file
+Socket.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Socket.cc.o
+.PHONY : Socket.cc.o
+
+Socket.i: Socket.cc.i
+.PHONY : Socket.i
+
+# target to preprocess a source file
+Socket.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Socket.cc.i
+.PHONY : Socket.cc.i
+
+Socket.s: Socket.cc.s
+.PHONY : Socket.s
+
+# target to generate assembly for a file
+Socket.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Socket.cc.s
+.PHONY : Socket.cc.s
+
+TcpConnection.o: TcpConnection.cc.o
+.PHONY : TcpConnection.o
+
+# target to build an object file
+TcpConnection.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/TcpConnection.cc.o
+.PHONY : TcpConnection.cc.o
+
+TcpConnection.i: TcpConnection.cc.i
+.PHONY : TcpConnection.i
+
+# target to preprocess a source file
+TcpConnection.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/TcpConnection.cc.i
+.PHONY : TcpConnection.cc.i
+
+TcpConnection.s: TcpConnection.cc.s
+.PHONY : TcpConnection.s
+
+# target to generate assembly for a file
+TcpConnection.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/TcpConnection.cc.s
+.PHONY : TcpConnection.cc.s
+
 TcpServer.o: TcpServer.cc.o
 .PHONY : TcpServer.o
 
@@ -297,6 +489,30 @@ TcpServer.s: TcpServer.cc.s
 TcpServer.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/TcpServer.cc.s
 .PHONY : TcpServer.cc.s
+
+Thread.o: Thread.cc.o
+.PHONY : Thread.o
+
+# target to build an object file
+Thread.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Thread.cc.o
+.PHONY : Thread.cc.o
+
+Thread.i: Thread.cc.i
+.PHONY : Thread.i
+
+# target to preprocess a source file
+Thread.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Thread.cc.i
+.PHONY : Thread.cc.i
+
+Thread.s: Thread.cc.s
+.PHONY : Thread.s
+
+# target to generate assembly for a file
+Thread.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/bin && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Thread.cc.s
+.PHONY : Thread.cc.s
 
 TimeStamp.o: TimeStamp.cc.o
 .PHONY : TimeStamp.o
@@ -355,9 +571,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mymuduo"
+	@echo "... Acceptor.o"
+	@echo "... Acceptor.i"
+	@echo "... Acceptor.s"
+	@echo "... Buffer.o"
+	@echo "... Buffer.i"
+	@echo "... Buffer.s"
+	@echo "... Callbacks.o"
+	@echo "... Callbacks.i"
+	@echo "... Callbacks.s"
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
+	@echo "... CurrentThread.o"
+	@echo "... CurrentThread.i"
+	@echo "... CurrentThread.s"
 	@echo "... DefaultPoller.o"
 	@echo "... DefaultPoller.i"
 	@echo "... DefaultPoller.s"
@@ -367,15 +595,30 @@ help:
 	@echo "... EventLoop.o"
 	@echo "... EventLoop.i"
 	@echo "... EventLoop.s"
+	@echo "... EventLoopThread.o"
+	@echo "... EventLoopThread.i"
+	@echo "... EventLoopThread.s"
+	@echo "... EventLoopThreadPool.o"
+	@echo "... EventLoopThreadPool.i"
+	@echo "... EventLoopThreadPool.s"
 	@echo "... InetAddress.o"
 	@echo "... InetAddress.i"
 	@echo "... InetAddress.s"
 	@echo "... Poller.o"
 	@echo "... Poller.i"
 	@echo "... Poller.s"
+	@echo "... Socket.o"
+	@echo "... Socket.i"
+	@echo "... Socket.s"
+	@echo "... TcpConnection.o"
+	@echo "... TcpConnection.i"
+	@echo "... TcpConnection.s"
 	@echo "... TcpServer.o"
 	@echo "... TcpServer.i"
 	@echo "... TcpServer.s"
+	@echo "... Thread.o"
+	@echo "... Thread.i"
+	@echo "... Thread.s"
 	@echo "... TimeStamp.o"
 	@echo "... TimeStamp.i"
 	@echo "... TimeStamp.s"
