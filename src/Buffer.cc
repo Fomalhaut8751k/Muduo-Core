@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <sys/uio.h>
+#include <unistd.h>
 
 Buffer::Buffer(std::size_t initialSize):
     buffer_(kCheapPrepend + initialSize),
@@ -140,7 +141,22 @@ ssize_t Buffer::readFd(int fd, int* saveErrno)
     else if(n <= writable)  // buffer的可写缓冲区已经够存储读出来的数据
     {
         writeIndex_ += n;
+        
+    }
+    else
+    {
+        writeIndex_ = buffer_.size();
         append(extrabuf, n - writable);  // writerIndex_开始写 
+    }
+    return n;
+}
+
+ssize_t Buffer::writeFd(int fd, int* saveErrno)
+{
+    ssize_t n = ::write(fd, peek(), readableBytes());
+    if(n < 0)
+    {
+        *saveErrno = errno;
     }
     return n;
 }

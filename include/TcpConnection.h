@@ -38,15 +38,10 @@ public:
 
     bool connected() const;
 
-    // 发送数据
-    void send(const void* message, int len);
-    // 关闭连接
-    void shutdown();
-
     // 设置回调函数
     void setConnectionCallback(const ConnectionCallback& cb);
     void setMessageCallback(const MessageCallback& cb);
-    void setWriteCallback(const WriteCompleteCallback& cb);
+    void setWriteCompleteCallback(const WriteCompleteCallback& cb);
     void setCloseCallback(const CloseCallback& cb);
     void setHighWaterMarkCallback(const HighWaterMarkCallback& cb, size_t highWaterMark);
 
@@ -54,16 +49,21 @@ public:
     void connectEstablished();
     void connectDestroyed();
 
+    void shutdown();
+    void shutdownInLoop();
+
+    void send(const std::string& buf);
+    void sendInLoop(const void* data, size_t len);
+
 private:
-    enum StateE { kDisconnected, kConnecting, kConnected, kDisconnected };
+    enum StateE { kDisconnected, kConnecting, kConnected, kDisconnecting };
+
+    void setState(StateE state);
     
     void handleRead(TimeStamp receiveTime);
     void handleWrite();
     void handleClose();
     void handleError();
-
-    void sendInLoop(const void* message, size_t len);
-    void shutdownInLoop();
     
     EventLoop *loop_;  // 这里绝对不是baseloop_, 因为TcpConnection都是在subloop管理的
     const std::string name_;
@@ -83,8 +83,8 @@ private:
     HighWaterMarkCallback highWaterMarkCallback_;
 
     size_t highWaterMark_;
-    Buffer inputBuffer_;
-    Buffer outputBuffer_;
+    Buffer inputBuffer_;  // 接受数据的缓冲区
+    Buffer outputBuffer_;  // 发送数据的缓冲区
 };
 
 #endif

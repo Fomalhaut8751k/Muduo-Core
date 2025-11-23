@@ -75,7 +75,7 @@ public:
 
     int events() const;
 
-    int set_revents(int revt);   // 对外提供的设置revents_的接口函数
+    void set_revents(int revt);   // 对外提供的设置revents_的接口函数
 
     int revents() const;
 

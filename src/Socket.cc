@@ -1,5 +1,6 @@
 #include "../include/Socket.h"
 #include "../include/InetAddress.h"
+#include "../include/Logger.h"
 
 #include "unistd.h"
 #include "string.h"
@@ -25,7 +26,7 @@ void Socket::bindAddress(const InetAddress& Localaddr)
 {
     if(0 !=::bind(sockfd_, (sockaddr*)Localaddr.getSockAddr(), sizeof(sockaddr_in)))
     {
-        /* 一条日志，FATAL， bind sockfd:%d fail \n， socketfd_ */
+        LOG_FATAL("bind sockfd:%d fail \n", sockfd_);
     }   
 }
 
@@ -33,7 +34,7 @@ void Socket::listen()
 {
     if(0 != ::listen(sockfd_, 1024))
     {
-        /* 一条日志，FATAL， listen sockfd:%d fail \n， socketfd_ */
+        LOG_FATAL("listen sockfd:%d fail \n", sockfd_);
     }
 }
 
@@ -42,7 +43,7 @@ int Socket::accept(InetAddress* peeraddr)
     sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     socklen_t addr_len = sizeof(addr);
-    int connfd = ::accept(sockfd_, (sockaddr*)&addr, &addr_len);
+    int connfd = ::accept4(sockfd_, (sockaddr*)&addr, &addr_len, SOCK_NONBLOCK | SOCK_CLOEXEC);
     if(0 <= connfd)
     {
         peeraddr->setSockAddr(addr);
@@ -54,7 +55,7 @@ void Socket::shutdownWrite()
 {
     if(0 > ::shutdown(sockfd_, SHUT_WR))
     {
-        /* 一条日志信息 ERROR shutdownWrite error */
+        LOG_ERROR("shutdownWrite error");
     }
 }
 

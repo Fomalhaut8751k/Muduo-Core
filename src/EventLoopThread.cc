@@ -12,6 +12,7 @@ EventLoopThread::EventLoopThread(const ThreadInitCallback& cb, const std::string
 {
 
 }
+
 EventLoopThread::~EventLoopThread()
 {
     exiting_ = true;

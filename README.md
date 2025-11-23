@@ -27,6 +27,10 @@ muduo网络库的核心功能
 
     完成了`EventLoop`, `Thread`, `EventLoopThread`, `EventLoopThreadPool`, `Acceptor`等代码的编写
 
+7. 2025.11.22 ~ 2025.11.23
+
+    完成了剩余代码的编写，实现了测试用例
+
 
 <br>
 

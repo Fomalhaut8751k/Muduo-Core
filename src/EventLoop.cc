@@ -1,6 +1,7 @@
 #include "../include/EventLoop.h"
 #include "../include/Channel.h"
 #include "../include/Poller.h"
+#include "../include/Logger.h"
 
 #include <sys/eventfd.h>
 #include <unistd.h>
@@ -25,7 +26,7 @@ int createEventfd()
     int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
     if(evtfd < 0)
     {
-        /* 一条日志：FATAL eventfd error:%d \n, errno */
+        LOG_FATAL("eventfd error:%d \n", errno);
     }
     return evtfd;
 }
@@ -46,10 +47,10 @@ EventLoop::EventLoop():
     wakeupChannel_(std::make_unique<Channel>(this, wakeupFd_)),
     callingPendingFunctors_(false)
 {
-    /* 一条日志：DEBUG  EventLoop created %p in thread %d \n, this, threadId_ */
+    LOG_DEBUG("EventLoop created %p in thread %d \n", this, threadId_);
     if(t_loopInThisThread)
     {   // 如果该线程已经有一个Loop就通过FATAL exit()
-        /* 一条日志，FATAL */
+        LOG_FATAL("Another EventLoop %p exists in this thread %d \n", t_loopInThisThread, threadId_);
     }
     else
     {
@@ -82,7 +83,7 @@ void EventLoop::handleRead()
     ssize_t n = read(wakeupFd_, &one, sizeof one);  // ?
     if(n != sizeof one)
     {
-        /* 一条日志 ERROR Eventloop::handleRead() reads << n << bytes instead of 8*/
+        LOG_ERROR("EventLoop::handleRead() reads %lu bytes instead of 8", n);
     }
 }
 
@@ -91,7 +92,7 @@ void EventLoop::loop()
     looping_ = true;
     quit_ = false;
 
-    /* 一条日志 INFO EventLoop %p start looping \n, this*/
+    LOG_INFO("EventLoop %p start looping \n", this);
     while(!quit_)
     {
         activateChannels_.clear();
@@ -117,7 +118,7 @@ void EventLoop::loop()
         */
     }
 
-    /* 一条日志 INFO  EventLoop %p stop looping. \n, this*/
+    LOG_INFO("EventLoop %p stop looping. \n", this);
 }
 
 
@@ -176,7 +177,7 @@ void EventLoop::wakeup()
     ssize_t n = write(wakeupFd_, &one, sizeof one);
     if(n != sizeof one)
     {
-        /* 一条日志 ERROR EventLoop::wakeup() writes %lu bytes instead of 8 \n, n*/
+        LOG_ERROR("EventLoop::wakeup() writes %lu bytes instead of 8 \n", n);
     }
 
 }

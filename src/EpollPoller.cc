@@ -1,4 +1,6 @@
 #include "../include/EpollPoller.h"
+#include "../include/Logger.h"
+
 #include "unistd.h"
 
 #include <cassert>
@@ -17,7 +19,7 @@ EpollPoller::EpollPoller(EventLoop* loop):
 {
     if(epollfd_ < 0)
     {
-        // 打印FATAL级别的日志
+        LOG_FATAL("epoll_create error:%d \n", errno);
     }
 }
 
@@ -28,14 +30,14 @@ EpollPoller::~EpollPoller()
 
 TimeStamp EpollPoller::poll(int timeoutMs, ChannelList* activeChannels)
 {
-    /* 一条日志: "fd total count" << channels_.size() 【debug】*/
+    LOG_INFO("func=%s => fd total count:%lu \n", __FUNCTION__, channels_.size());
     int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
     int saveErrno = errno;
     TimeStamp now(TimeStamp::now());
 
     if(numEvents > 0)
     {
-        /* 一条日志 %d events happened \n  */
+        LOG_INFO("%d events happened \n", numEvents);
         fillActiveChannels(numEvents, activeChannels);
         if(numEvents == events_.size())
         {   // 扩容
@@ -44,14 +46,14 @@ TimeStamp EpollPoller::poll(int timeoutMs, ChannelList* activeChannels)
     }
     else if (numEvents == 0)  // 超时
     {
-        /* 一条日志 %s timeout! \n, __FUNCTION__*/
+        LOG_DEBUG("%s timeout! \n", __FUNCTION__);
     }
     else
     {
         if(saveErrno != EINTR)  // 不是外部中断
         {
             errno = saveErrno;
-            /* 一条日志 EpollPoller::poll() err! */
+            LOG_ERROR("EPollPoller::poll() err!");
         }
     }
 
@@ -62,8 +64,7 @@ void EpollPoller::updateChannel(Channel* channel)
 {
     // hasChannel(channel)是判断是否在EventLoop中，而非在Poller中
     const int index = channel->index();  // 用这个来判断是否在Poller中
-    
-    /* 一条日志信息, fd, events, index */
+    LOG_INFO("func=%s => fd=%d events=%d index=%d \n", __FUNCTION__, channel->fd(), channel->events(), index);
 
     int fd = channel->fd();
     if(index == kNew || index == kDeleted)  // 如果是新的，或者已删除了的
@@ -116,6 +117,8 @@ void EpollPoller::removeChannel(Channel* channel)
     assert(channels_[fd] == channel);
     assert(channel->isNoneEvent()); 
 
+    LOG_INFO("func=%s => fd=%d\n", __FUNCTION__, fd);
+
     const int index = channel->index();
 
     assert(index == kAdded || index == kDeleted);  // 这两个状态下
@@ -144,11 +147,11 @@ void EpollPoller::update(int operation, Channel* channel)
     {   // 如果出错了，先看看是哪个operation
         if(operation == EPOLL_CTL_DEL)
         {
-            /* 一条日志信息，删除失败ERROR */
+            LOG_ERROR("epoll_ctl del error:%d\n", errno);
         }
         else
         {
-            /* 一条日志信息，添加或修改失败FATAL */
+            LOG_FATAL("epoll_ctl add/mod error:%d\n", errno);
         }
     }
 }

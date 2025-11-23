@@ -1,5 +1,5 @@
 #include "../include/Channel.h"
-#include "../include/log_system/include/MyLog.hpp"
+#include "../include/Logger.h"
 #include "../include/EventLoop.h"
 
 #include "sys/epoll.h"
@@ -65,8 +65,8 @@ void Channel::handleEvent(TimeStamp receiveTime)
 // 根据具体接收到的事件，执行响应的回调函数
 void Channel::handleEventWithGuard(TimeStamp receiveTime)
 {
-    mylog::GetLogger("default")->Info("channel handleEvent revents" + revents_);
-
+    LOG_INFO("channel handleEvent revents:%d\n", revents_);
+    
     // 接收到的事件：revents_
     if((revents_ & EPOLLHUP) && !(revents_ & EPOLLIN))
     {
@@ -112,7 +112,7 @@ void Channel::setErrorCallback(EventCallback cb)
 
 int Channel::fd() const { return fd_; }
 int Channel::events() const { return events_; }
-int Channel::set_revents(int revt){ return revents_; }
+void Channel::set_revents(int revt){ revents_ = revt; }
 int Channel::revents() const { return revents_; }
 
 // 设置fd对应的事件状态
