@@ -1,4 +1,5 @@
 #include "../include/Acceptor.h"
+#include "../include/Alogger.h"
 #include "../include/Logger.h"
 #include "../include/InetAddress.h"
 
@@ -10,7 +11,10 @@ static int createNonblocking()
     int sockfd = ::socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, 0);
     if(sockfd < 0)
     {
-        LOG_FATAL("%s:%s:%d listen socket create err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "%s:%s:%d listen socket create err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("%s:%s:%d listen socket create err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
     }
 
     return sockfd;
@@ -68,11 +72,20 @@ void Acceptor::handleRead()
         }
     }
     else
-    {
-        LOG_ERROR("%s:%s:%d accept err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
+    {   
+        {
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "%s:%s:%d accept err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
+            logger_->ERROR(logbuf);
+        }
+        // LOG_ERROR("%s:%s:%d accept err:%d \n", __FILE__, __FUNCTION__, __LINE__, errno);
+        
         if(errno == EMFILE)
         {
-            LOG_ERROR("%s:%s:%d sockfd reached limit! \n", __FILE__, __FUNCTION__, __LINE__);
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "%s:%s:%d sockfd reached limit! \n", __FILE__, __FUNCTION__, __LINE__);
+            logger_->ERROR(logbuf);
+            // LOG_ERROR("%s:%s:%d sockfd reached limit! \n", __FILE__, __FUNCTION__, __LINE__);
         }
     }
 }

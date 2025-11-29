@@ -1,14 +1,19 @@
 #include "../include/TcpServer.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 
 #include <functional>
 #include <string.h>
+
 
 static EventLoop* CheckLoopNotNull(EventLoop* loop)
 {
     if(!loop) 
     { 
-        LOG_FATAL("%s:%s:%d mainLoop is null! \n", __FILE__, __FUNCTION__, __LINE__);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "%s:%s:%d mainLoop is null! \n", __FILE__, __FUNCTION__, __LINE__);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("%s:%s:%d mainLoop is null! \n", __FILE__, __FUNCTION__, __LINE__);
     }
     return loop;
 }
@@ -27,7 +32,6 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& addr, const std::string
     // 当有新用户连接时，会执行TcpServer::newConnection回调
     acceptor_->setNewConnectionCallback(std::bind(&TcpServer::newConnection, this, 
                                         std::placeholders::_1, std::placeholders::_2));
-    
 }
 
 TcpServer::~TcpServer()
@@ -70,9 +74,14 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     snprintf(buf, sizeof(buf), "-%s#%d", ipPort_.c_str(), nextConnId_);
     ++nextConnId_;
     std::string connName = name_ + buf;  // 最终conn的名称
-    
-    LOG_INFO("TcpServer::newConnection [%s] - new connection [%s] from %s \n",
+
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "TcpServer::newConnection [%s] - new connection [%s] from %s \n",
         name_.c_str(), connName.c_str(), peerAddr.toIpPort().c_str());
+    logger_->INFO(logbuf);
+    
+    // LOG_INFO("TcpServer::newConnection [%s] - new connection [%s] from %s \n",
+    //     name_.c_str(), connName.c_str(), peerAddr.toIpPort().c_str());
     
     // 通过sockfd获取其绑定的本机的ip地址和端口号
     sockaddr_in local;
@@ -80,7 +89,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     socklen_t addrlen = sizeof local;
     if(::getsockname(sockfd, (sockaddr*)&local, &addrlen) < 0)
     {
-        LOG_ERROR("sockets::getLocalAddr");
+        // LOG_ERROR("sockets::getLocalAddr");
+        logger_->ERROR("sockets::getLocalAddr");
     }
     InetAddress localAddr(local);
 
@@ -106,8 +116,12 @@ void TcpServer::removeConnection(const TcpConnectionPtr& conn)
 
 void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn)
 {
-    LOG_INFO("TcpServer::removeConnectionInLoop [%s] - connection %s\n", 
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "TcpServer::removeConnectionInLoop [%s] - connection %s\n", 
         name_.c_str(), conn->name().c_str());
+    logger_->INFO(logbuf);
+    // LOG_INFO("TcpServer::removeConnectionInLoop [%s] - connection %s\n", 
+    //     name_.c_str(), conn->name().c_str());
 
     connections_.erase(conn->name());
     EventLoop *ioLoop = conn->getLoop();

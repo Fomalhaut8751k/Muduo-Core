@@ -2,6 +2,7 @@
 #include "../include/Channel.h"
 #include "../include/Poller.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 
 #include <sys/eventfd.h>
 #include <unistd.h>
@@ -26,14 +27,17 @@ int createEventfd()
     int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
     if(evtfd < 0)
     {
-        LOG_FATAL("eventfd error:%d \n", errno);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "eventfd error:%d \n", errno);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("eventfd error:%d \n", errno);
     }
     return evtfd;
 }
 
 bool EventLoop::isInLoopThread() const
 {
-    return threadId_ == tid();
+    return threadId_ == tid();  // threadId_: 当前loop的thread，tid()当前的thread
 }
 
 
@@ -47,10 +51,19 @@ EventLoop::EventLoop():
     wakeupChannel_(std::make_unique<Channel>(this, wakeupFd_)),
     callingPendingFunctors_(false)
 {
-    LOG_DEBUG("EventLoop created %p in thread %d \n", this, threadId_);
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "EventLoop created %p in thread %d \n", this, threadId_);
+        logger_->DEBUG(logbuf);
+    }
+    // LOG_DEBUG("EventLoop created %p in thread %d \n", this, threadId_);
+
     if(t_loopInThisThread)
     {   // 如果该线程已经有一个Loop就通过FATAL exit()
-        LOG_FATAL("Another EventLoop %p exists in this thread %d \n", t_loopInThisThread, threadId_);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "Another EventLoop %p exists in this thread %d \n", t_loopInThisThread, threadId_);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("Another EventLoop %p exists in this thread %d \n", t_loopInThisThread, threadId_);
     }
     else
     {
@@ -83,7 +96,10 @@ void EventLoop::handleRead()
     ssize_t n = read(wakeupFd_, &one, sizeof one);  // ?
     if(n != sizeof one)
     {
-        LOG_ERROR("EventLoop::handleRead() reads %lu bytes instead of 8", n);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "EventLoop::handleRead() reads %lu bytes instead of 8", n);
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("EventLoop::handleRead() reads %lu bytes instead of 8", n);
     }
 }
 
@@ -92,7 +108,13 @@ void EventLoop::loop()
     looping_ = true;
     quit_ = false;
 
-    LOG_INFO("EventLoop %p start looping \n", this);
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "EventLoop %p start looping \n", this);
+        logger_->INFO(logbuf);
+    }
+    // LOG_INFO("EventLoop %p start looping \n", this);
+
     while(!quit_)
     {
         activateChannels_.clear();
@@ -118,7 +140,12 @@ void EventLoop::loop()
         */
     }
 
-    LOG_INFO("EventLoop %p stop looping. \n", this);
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "EventLoop %p stop looping. \n", this);
+        logger_->INFO(logbuf);
+    }
+    // LOG_INFO("EventLoop %p stop looping. \n", this);
 }
 
 
@@ -177,9 +204,11 @@ void EventLoop::wakeup()
     ssize_t n = write(wakeupFd_, &one, sizeof one);
     if(n != sizeof one)
     {
-        LOG_ERROR("EventLoop::wakeup() writes %lu bytes instead of 8 \n", n);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "EventLoop::wakeup() writes %lu bytes instead of 8 \n", n);
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("EventLoop::wakeup() writes %lu bytes instead of 8 \n", n);
     }
-
 }
 
 // 用来唤醒loop的方法 => Poller的方法

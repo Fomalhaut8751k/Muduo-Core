@@ -36,7 +36,7 @@ void Thread::start()
         // thread_ = std::make_shared<std::thread>(func_);
         thread_ = std::shared_ptr<std::thread>(new std::thread(
             [&]()->void{
-                tid_ = tid();  // 获取线程的tid值
+                tid_ = tid();  // 获取新创建的线程的tid值
                 sem_post(&sem);
                 func_();
             }

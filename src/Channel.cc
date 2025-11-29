@@ -1,5 +1,6 @@
 #include "../include/Channel.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 #include "../include/EventLoop.h"
 
 #include "sys/epoll.h"
@@ -65,7 +66,10 @@ void Channel::handleEvent(TimeStamp receiveTime)
 // 根据具体接收到的事件，执行响应的回调函数
 void Channel::handleEventWithGuard(TimeStamp receiveTime)
 {
-    LOG_INFO("channel handleEvent revents:%d\n", revents_);
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "channel handleEvent revents:%d\n", revents_);
+    logger_->INFO(logbuf);
+    // LOG_INFO("channel handleEvent revents:%d\n", revents_);
     
     // 接收到的事件：revents_
     if((revents_ & EPOLLHUP) && !(revents_ & EPOLLIN))

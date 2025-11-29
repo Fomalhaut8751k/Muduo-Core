@@ -154,6 +154,30 @@ Acceptor.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Acceptor.cc.s
 .PHONY : Acceptor.cc.s
 
+Alogger.o: Alogger.cc.o
+.PHONY : Alogger.o
+
+# target to build an object file
+Alogger.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Alogger.cc.o
+.PHONY : Alogger.cc.o
+
+Alogger.i: Alogger.cc.i
+.PHONY : Alogger.i
+
+# target to preprocess a source file
+Alogger.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Alogger.cc.i
+.PHONY : Alogger.cc.i
+
+Alogger.s: Alogger.cc.s
+.PHONY : Alogger.s
+
+# target to generate assembly for a file
+Alogger.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Alogger.cc.s
+.PHONY : Alogger.cc.s
+
 Buffer.o: Buffer.cc.o
 .PHONY : Buffer.o
 
@@ -394,6 +418,30 @@ InetAddress.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/InetAddress.cc.s
 .PHONY : InetAddress.cc.s
 
+Logger.o: Logger.cc.o
+.PHONY : Logger.o
+
+# target to build an object file
+Logger.cc.o:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Logger.cc.o
+.PHONY : Logger.cc.o
+
+Logger.i: Logger.cc.i
+.PHONY : Logger.i
+
+# target to preprocess a source file
+Logger.cc.i:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Logger.cc.i
+.PHONY : Logger.cc.i
+
+Logger.s: Logger.cc.s
+.PHONY : Logger.s
+
+# target to generate assembly for a file
+Logger.cc.s:
+	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/Logger.cc.s
+.PHONY : Logger.cc.s
+
 Poller.o: Poller.cc.o
 .PHONY : Poller.o
 
@@ -538,30 +586,6 @@ TimeStamp.cc.s:
 	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/TimeStamp.cc.s
 .PHONY : TimeStamp.cc.s
 
-logger.o: logger.cc.o
-.PHONY : logger.o
-
-# target to build an object file
-logger.cc.o:
-	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/logger.cc.o
-.PHONY : logger.cc.o
-
-logger.i: logger.cc.i
-.PHONY : logger.i
-
-# target to preprocess a source file
-logger.cc.i:
-	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/logger.cc.i
-.PHONY : logger.cc.i
-
-logger.s: logger.cc.s
-.PHONY : logger.s
-
-# target to generate assembly for a file
-logger.cc.s:
-	cd /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mymuduo.dir/build.make src/CMakeFiles/mymuduo.dir/logger.cc.s
-.PHONY : logger.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -574,6 +598,9 @@ help:
 	@echo "... Acceptor.o"
 	@echo "... Acceptor.i"
 	@echo "... Acceptor.s"
+	@echo "... Alogger.o"
+	@echo "... Alogger.i"
+	@echo "... Alogger.s"
 	@echo "... Buffer.o"
 	@echo "... Buffer.i"
 	@echo "... Buffer.s"
@@ -604,6 +631,9 @@ help:
 	@echo "... InetAddress.o"
 	@echo "... InetAddress.i"
 	@echo "... InetAddress.s"
+	@echo "... Logger.o"
+	@echo "... Logger.i"
+	@echo "... Logger.s"
 	@echo "... Poller.o"
 	@echo "... Poller.i"
 	@echo "... Poller.s"
@@ -622,9 +652,6 @@ help:
 	@echo "... TimeStamp.o"
 	@echo "... TimeStamp.i"
 	@echo "... TimeStamp.s"
-	@echo "... logger.o"
-	@echo "... logger.i"
-	@echo "... logger.s"
 .PHONY : help
 
 

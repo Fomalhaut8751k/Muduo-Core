@@ -186,25 +186,124 @@ src/CMakeFiles/mymuduo.dir/Acceptor.cc.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/Logger.h \
- /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/InetAddress.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/Alogger.h \
+ /usr/include/mylog/MyLog.hpp /usr/include/mylog/Manager.hpp \
+ /usr/include/mylog/AsyncLogger.hpp /usr/include/mylog/AsyncWorker.hpp \
+ /usr/include/c++/11/mutex /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/limits \
+ /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
+ /usr/include/c++/11/bits/std_mutex.h \
+ /usr/include/c++/11/bits/unique_lock.h \
+ /usr/include/c++/11/condition_variable /usr/include/c++/11/atomic \
+ /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /usr/include/mylog/AsyncBuffer.hpp /usr/include/c++/11/cstring \
+ /usr/include/string.h /usr/include/strings.h \
+ /usr/include/mylog/Message.hpp /usr/include/mylog/Level.hpp \
+ /usr/include/mylog/LogSystemUtils.hpp /usr/include/c++/11/fstream \
+ /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/mylog/json.hpp \
+ /usr/include/c++/11/algorithm \
+ /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/11/cassert /usr/include/assert.h \
+ /usr/include/c++/11/ciso646 /usr/include/c++/11/cstddef \
+ /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
+ /usr/include/c++/11/numeric /usr/include/c++/11/bits/stl_numeric.h \
+ /usr/include/c++/11/pstl/glue_numeric_defs.h \
+ /usr/include/c++/11/forward_list /usr/include/c++/11/bits/forward_list.h \
+ /usr/include/c++/11/bits/forward_list.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/valarray \
+ /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/tr1/special_function_util.h \
+ /usr/include/c++/11/tr1/bessel_function.tcc \
+ /usr/include/c++/11/tr1/beta_function.tcc \
+ /usr/include/c++/11/tr1/ell_integral.tcc \
+ /usr/include/c++/11/tr1/exp_integral.tcc \
+ /usr/include/c++/11/tr1/hypergeometric.tcc \
+ /usr/include/c++/11/tr1/legendre_function.tcc \
+ /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/11/tr1/poly_hermite.tcc \
+ /usr/include/c++/11/tr1/poly_laguerre.tcc \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /usr/include/c++/11/bits/valarray_array.h \
+ /usr/include/c++/11/bits/valarray_array.tcc \
+ /usr/include/c++/11/bits/valarray_before.h \
+ /usr/include/c++/11/bits/slice_array.h \
+ /usr/include/c++/11/bits/valarray_after.h \
+ /usr/include/c++/11/bits/gslice.h \
+ /usr/include/c++/11/bits/gslice_array.h \
+ /usr/include/c++/11/bits/mask_array.h \
+ /usr/include/c++/11/bits/indirect_array.h \
+ /usr/include/x86_64-linux-gnu/sys/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
+ /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
+ /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
+ /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
+ /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
+ /usr/include/linux/stddef.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+ /usr/include/asm-generic/posix_types.h \
+ /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
+ /usr/include/mylog/LogSystemConfig.hpp /usr/include/mylog/Flush.hpp \
+ /usr/include/mylog/MyLog.hpp \
+ /usr/include/mylog/backlog/ClientBackupLog.hpp \
+ /usr/local/include/event.h /usr/local/include/event2/event-config.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h /usr/local/include/evutil.h \
+ /usr/local/include/event2/util.h /usr/local/include/event2/visibility.h \
+ /usr/include/netdb.h /usr/include/netinet/in.h \
+ /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
  /usr/include/x86_64-linux-gnu/bits/socket_type.h \
  /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
  /usr/include/x86_64-linux-gnu/asm/socket.h \
- /usr/include/asm-generic/socket.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h \
+ /usr/include/asm-generic/socket.h \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/arpa/inet.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/rpc/netdb.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/netdb.h \
+ /usr/local/include/event2/event_struct.h \
+ /usr/local/include/event2/keyvalq_struct.h \
+ /usr/local/include/event2/event.h \
+ /usr/local/include/event2/event_compat.h \
+ /usr/local/include/event2/buffer.h \
+ /usr/include/x86_64-linux-gnu/sys/uio.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio-ext.h \
+ /usr/local/include/event2/buffer_compat.h \
+ /usr/local/include/event2/bufferevent.h \
+ /usr/local/include/event2/bufferevent_struct.h \
+ /usr/local/include/event2/bufferevent_compat.h \
+ /usr/local/include/event2/tag.h /usr/local/include/event2/tag_compat.h \
+ /usr/local/include/event2/thread.h /usr/include/arpa/inet.h \
+ /usr/include/c++/11/future /usr/include/c++/11/bits/atomic_futex.h \
+ /usr/include/mylog/Thread.hpp /usr/include/c++/11/queue \
+ /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
+ /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_queue.h \
+ /usr/include/mylog/ThreadPool.hpp /usr/include/mylog/Thread.hpp \
+ /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/Logger.h \
+ /home/wzd/桌面/projects/Muduo-Core/Muduo-Core/src/../include/InetAddress.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \

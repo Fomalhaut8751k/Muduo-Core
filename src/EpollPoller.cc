@@ -1,5 +1,6 @@
 #include "../include/EpollPoller.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 
 #include "unistd.h"
 
@@ -19,7 +20,10 @@ EpollPoller::EpollPoller(EventLoop* loop):
 {
     if(epollfd_ < 0)
     {
-        LOG_FATAL("epoll_create error:%d \n", errno);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "epoll_create error:%d \n", errno);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("epoll_create error:%d \n", errno);
     }
 }
 
@@ -30,14 +34,24 @@ EpollPoller::~EpollPoller()
 
 TimeStamp EpollPoller::poll(int timeoutMs, ChannelList* activeChannels)
 {
-    LOG_INFO("func=%s => fd total count:%lu \n", __FUNCTION__, channels_.size());
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "func=%s => fd total count:%lu \n", __FUNCTION__, channels_.size());
+        logger_->INFO(logbuf);
+    }
+    
+    // LOG_INFO("func=%s => fd total count:%lu \n", __FUNCTION__, channels_.size());
     int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
     int saveErrno = errno;
     TimeStamp now(TimeStamp::now());
 
     if(numEvents > 0)
     {
-        LOG_INFO("%d events happened \n", numEvents);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "%d events happened \n", numEvents);
+        logger_->INFO(logbuf);
+        // LOG_INFO("%d events happened \n", numEvents);
+
         fillActiveChannels(numEvents, activeChannels);
         if(numEvents == events_.size())
         {   // 扩容
@@ -46,14 +60,20 @@ TimeStamp EpollPoller::poll(int timeoutMs, ChannelList* activeChannels)
     }
     else if (numEvents == 0)  // 超时
     {
-        LOG_DEBUG("%s timeout! \n", __FUNCTION__);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "%s timeout! \n", __FUNCTION__);
+        logger_->DEBUG(logbuf);
+        // LOG_DEBUG("%s timeout! \n", __FUNCTION__);
     }
     else
     {
         if(saveErrno != EINTR)  // 不是外部中断
         {
             errno = saveErrno;
-            LOG_ERROR("EPollPoller::poll() err!");
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "EPollPoller::poll() err!");
+            logger_->ERROR(logbuf);
+            // LOG_ERROR("EPollPoller::poll() err!");
         }
     }
 
@@ -64,7 +84,13 @@ void EpollPoller::updateChannel(Channel* channel)
 {
     // hasChannel(channel)是判断是否在EventLoop中，而非在Poller中
     const int index = channel->index();  // 用这个来判断是否在Poller中
-    LOG_INFO("func=%s => fd=%d events=%d index=%d \n", __FUNCTION__, channel->fd(), channel->events(), index);
+
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "func=%s => fd=%d events=%d index=%d \n", __FUNCTION__, channel->fd(), channel->events(), index);
+        logger_->INFO(logbuf);
+    }
+    // LOG_INFO("func=%s => fd=%d events=%d index=%d \n", __FUNCTION__, channel->fd(), channel->events(), index);
 
     int fd = channel->fd();
     if(index == kNew || index == kDeleted)  // 如果是新的，或者已删除了的
@@ -117,7 +143,12 @@ void EpollPoller::removeChannel(Channel* channel)
     assert(channels_[fd] == channel);
     assert(channel->isNoneEvent()); 
 
-    LOG_INFO("func=%s => fd=%d\n", __FUNCTION__, fd);
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "func=%s => fd=%d\n", __FUNCTION__, fd);
+        logger_->INFO(logbuf);
+    }
+    // LOG_INFO("func=%s => fd=%d\n", __FUNCTION__, fd);
 
     const int index = channel->index();
 
@@ -147,11 +178,17 @@ void EpollPoller::update(int operation, Channel* channel)
     {   // 如果出错了，先看看是哪个operation
         if(operation == EPOLL_CTL_DEL)
         {
-            LOG_ERROR("epoll_ctl del error:%d\n", errno);
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "epoll_ctl del error:%d\n", errno);
+            logger_->ERROR(logbuf);
+            // LOG_ERROR("epoll_ctl del error:%d\n", errno);
         }
         else
         {
-            LOG_FATAL("epoll_ctl add/mod error:%d\n", errno);
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "epoll_ctl add/mod error:%d\n", errno);
+            logger_->FATAL(logbuf);
+            // LOG_FATAL("epoll_ctl add/mod error:%d\n", errno);
         }
     }
 }

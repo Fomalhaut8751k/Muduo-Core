@@ -3,6 +3,7 @@
 #include "../include/Channel.h"
 #include "../include/EventLoop.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 
 #include <functional>
 #include <errno.h>
@@ -18,7 +19,10 @@ static EventLoop* CheckLoopNotNull(EventLoop* loop)
 {
     if(!loop) 
     { 
-        LOG_FATAL("%s:%s:%d TcpConnection Loop is null! \n", __FILE__, __FUNCTION__, __LINE__);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "%s:%s:%d TcpConnection Loop is null! \n", __FILE__, __FUNCTION__, __LINE__);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("%s:%s:%d TcpConnection Loop is null! \n", __FILE__, __FUNCTION__, __LINE__);
     }
     return loop;
 }
@@ -43,7 +47,12 @@ TcpConnection::TcpConnection(EventLoop* loop,
     channel_->setCloseCallback(std::bind(&TcpConnection::handleClose, this));
     channel_->setErrorCallback(std::bind(&TcpConnection::handleError, this));
 
-    LOG_INFO("TcpConnection::ctor[%s] at fd=%d\n", name_.c_str(), sockfd);
+    {
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "TcpConnection::ctor[%s] at fd=%d\n", name_.c_str(), sockfd);
+        logger_->INFO(logbuf);
+    }
+    // LOG_INFO("TcpConnection::ctor[%s] at fd=%d\n", name_.c_str(), sockfd);
     socket_->setKeepAlive(true);
 }
 
@@ -54,7 +63,10 @@ void TcpConnection::setState(StateE state)
 
 TcpConnection::~TcpConnection()
 {
-    LOG_INFO("TcpConnection::dtor[%s] at fd=%d state=%d \n", name_.c_str(), channel_->fd(), (int)state_);
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "TcpConnection::dtor[%s] at fd=%d state=%d \n", name_.c_str(), channel_->fd(), (int)state_);
+    logger_->INFO(logbuf);
+    // LOG_INFO("TcpConnection::dtor[%s] at fd=%d state=%d \n", name_.c_str(), channel_->fd(), (int)state_);
 }
 
 void TcpConnection::handleRead(TimeStamp receiveTime)
@@ -73,7 +85,10 @@ void TcpConnection::handleRead(TimeStamp receiveTime)
     else
     {
         errno = savedErrno;
-        LOG_ERROR("TcpConnection::handleRead");
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "TcpConnection::handleRead");
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("TcpConnection::handleRead");
         handleError();
     }
 }
@@ -102,19 +117,29 @@ void TcpConnection::handleWrite()
         }
         else
         {
-            LOG_ERROR("TcpConnection::handleWrite");
+            char logbuf[1024] = {0};
+            snprintf(logbuf, 1024, "TcpConnection::handleWrite");
+            logger_->ERROR(logbuf);
+            // LOG_ERROR("TcpConnection::handleWrite");
         }
     }
     else
     {
-        LOG_ERROR("TcpConnection fd=%d is down, no more writing \n", channel_->fd());
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "TcpConnection fd=%d is down, no more writing \n", channel_->fd());
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("TcpConnection fd=%d is down, no more writing \n", channel_->fd());
     }
     
 }
 
 void TcpConnection::handleClose()
 {
-    LOG_INFO("TcpConnection::handleClose fd=%d state=%d \n", channel_->fd(), (int)state_);
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "TcpConnection::handleClose fd=%d state=%d \n", channel_->fd(), (int)state_);
+    logger_->INFO(logbuf);
+    // LOG_INFO("TcpConnection::handleClose fd=%d state=%d \n", channel_->fd(), (int)state_);
+
     setState(kDisconnected);
     channel_->disableAll();
 
@@ -136,7 +161,10 @@ void TcpConnection::handleError()
     {
         err = optval;
     }
-    LOG_ERROR("TcpConnection::handleError name:%s - SO_ERROR:%d \n", name_.c_str(), err);
+    char logbuf[1024] = {0};
+    snprintf(logbuf, 1024, "TcpConnection::handleError name:%s - SO_ERROR:%d \n", name_.c_str(), err);
+    logger_->ERROR(logbuf);
+    // LOG_ERROR("TcpConnection::handleError name:%s - SO_ERROR:%d \n", name_.c_str(), err);
 }
 
 void TcpConnection::send(const std::string& buf)
@@ -164,7 +192,10 @@ void TcpConnection::sendInLoop(const void* data, size_t len)
     // 之前调用过该connection的shutdown，不能再进行发送了
     if(state_ == kDisconnected)
     {
-        LOG_ERROR("disconnected, give up writing!");
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "disconnected, give up writing!");
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("disconnected, give up writing!");
         return;
     }
     // channel第一次开始写数据而且缓冲区没有待发送数据
@@ -184,7 +215,10 @@ void TcpConnection::sendInLoop(const void* data, size_t len)
             nwrote = 0;
             if(errno != EWOULDBLOCK)  // 非阻塞没有数据正常返回
             {
-                LOG_ERROR("TcpConnection::sendInLoop");
+                char logbuf[1024] = {0};
+                snprintf(logbuf, 1024, "TcpConnection::sendInLoop");
+                logger_->ERROR(logbuf);
+                // LOG_ERROR("TcpConnection::sendInLoop");
                 if(errno == EPIPE || errno == ECONNRESET)
                 {
                     faultError = true;

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "../../lib/libmymuduo.so"
   "CMakeFiles/mymuduo.dir/Acceptor.cc.o"
   "CMakeFiles/mymuduo.dir/Acceptor.cc.o.d"
+  "CMakeFiles/mymuduo.dir/Alogger.cc.o"
+  "CMakeFiles/mymuduo.dir/Alogger.cc.o.d"
   "CMakeFiles/mymuduo.dir/Buffer.cc.o"
   "CMakeFiles/mymuduo.dir/Buffer.cc.o.d"
   "CMakeFiles/mymuduo.dir/Callbacks.cc.o"
@@ -23,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/mymuduo.dir/EventLoopThreadPool.cc.o.d"
   "CMakeFiles/mymuduo.dir/InetAddress.cc.o"
   "CMakeFiles/mymuduo.dir/InetAddress.cc.o.d"
+  "CMakeFiles/mymuduo.dir/Logger.cc.o"
+  "CMakeFiles/mymuduo.dir/Logger.cc.o.d"
   "CMakeFiles/mymuduo.dir/Poller.cc.o"
   "CMakeFiles/mymuduo.dir/Poller.cc.o.d"
   "CMakeFiles/mymuduo.dir/Socket.cc.o"
@@ -35,8 +39,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/mymuduo.dir/Thread.cc.o.d"
   "CMakeFiles/mymuduo.dir/TimeStamp.cc.o"
   "CMakeFiles/mymuduo.dir/TimeStamp.cc.o.d"
-  "CMakeFiles/mymuduo.dir/logger.cc.o"
-  "CMakeFiles/mymuduo.dir/logger.cc.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,6 +1,7 @@
 #include "../include/Socket.h"
 #include "../include/InetAddress.h"
 #include "../include/Logger.h"
+#include "../include/Alogger.h"
 
 #include "unistd.h"
 #include "string.h"
@@ -26,7 +27,10 @@ void Socket::bindAddress(const InetAddress& Localaddr)
 {
     if(0 !=::bind(sockfd_, (sockaddr*)Localaddr.getSockAddr(), sizeof(sockaddr_in)))
     {
-        LOG_FATAL("bind sockfd:%d fail \n", sockfd_);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "bind sockfd:%d fail \n", sockfd_);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("bind sockfd:%d fail \n", sockfd_);
     }   
 }
 
@@ -34,7 +38,10 @@ void Socket::listen()
 {
     if(0 != ::listen(sockfd_, 1024))
     {
-        LOG_FATAL("listen sockfd:%d fail \n", sockfd_);
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "listen sockfd:%d fail \n", sockfd_);
+        logger_->FATAL(logbuf);
+        // LOG_FATAL("listen sockfd:%d fail \n", sockfd_);
     }
 }
 
@@ -55,7 +62,10 @@ void Socket::shutdownWrite()
 {
     if(0 > ::shutdown(sockfd_, SHUT_WR))
     {
-        LOG_ERROR("shutdownWrite error");
+        char logbuf[1024] = {0};
+        snprintf(logbuf, 1024, "shutdownWrite error");
+        logger_->ERROR(logbuf);
+        // LOG_ERROR("shutdownWrite error");
     }
 }
 
